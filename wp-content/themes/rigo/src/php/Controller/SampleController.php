@@ -2,6 +2,7 @@
 namespace Rigo\Controller;
 
 use Rigo\Types\Course;
+use Rigo\Types\Car;
 
 class SampleController{
     
@@ -16,5 +17,9 @@ class SampleController{
         return $query->posts;
     }
     
+    public function getDraftCars(){
+        $query = Car::all([ 'status' => 'draft' ]);
+        return $query->posts;
+    }
 }
 ?>
