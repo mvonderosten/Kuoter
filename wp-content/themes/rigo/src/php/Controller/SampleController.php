@@ -1,9 +1,7 @@
 <?php
 namespace Rigo\Controller;
-
 use Rigo\Types\Course;
 use Rigo\Types\Car;
-
 class SampleController{
     
     public function getHomeData(){
@@ -19,7 +17,12 @@ class SampleController{
     
     public function getDraftCars(){
         $query = Car::all([ 'status' => 'draft' ]);
-        return $query->posts;
+        $lst = [];
+        forEach($query->posts as $car) {
+            $lst[] = Car::serialize($car);
+        }
+        return $lst;
     }
+    
 }
 ?>
